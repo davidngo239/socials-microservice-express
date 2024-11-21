@@ -6,7 +6,7 @@
 3. Start services with docker compose: `docker-compose up -d`
 4. Migrate db with Prisma:
    ```
-   export DATABASE_URL="mysql://root:200lab_secret@localhost:3306/social_network?connection_limit=100"
+   export DATABASE_URL="mysql://root:app_secret@localhost:3306/social_network?connection_limit=100"
    pnpx prisma migrate dev
    pnpx prisma generate
    ```
@@ -19,7 +19,7 @@ docker-compose up -d
 
 ## Migrate db with Prisma
 ```
-export DATABASE_URL="mysql://root:200lab_secret@localhost:3306/social_network?connection_limit=100"
+export DATABASE_URL="mysql://root:app_secret@localhost:3306/social_network?connection_limit=100"
 pnpx prisma migrate dev
 pnpx prisma generate
 ```

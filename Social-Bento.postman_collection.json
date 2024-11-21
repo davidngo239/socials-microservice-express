@@ -4,7 +4,7 @@
 		"name": "Social-Bento",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37469021",
-		"_collection_link": "https://p200lab.postman.co/workspace/200Lab-Workspace~e83af5e7-d4f2-441e-8cca-97036a27797b/collection/19271458-37796c53-c3e6-4abf-899a-1dd89b3c064e?action=share&source=collection_link&creator=37469021"
+		"_collection_link": "https://app.postman.co/workspace/app-Workspace~e83af5e7-d4f2-441e-8cca-97036a27797b/collection/19271458-37796c53-c3e6-4abf-899a-1dd89b3c064e?action=share&source=collection_link&creator=37469021"
 	},
 	"item": [
 		{
@@ -1780,7 +1780,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"200Lab\",\n    \"color\": \"#4287f5\"\n}",
+							"raw": "{\n    \"name\": \"app\",\n    \"color\": \"#4287f5\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -9,9 +9,9 @@ const port = process.env.PORT || '3000';
 export const config = {
   envName: process.env.NODE_ENV,
   port,
-  jwtSecret: process.env.JWT_SECRET_KEY || '200L@b.io',
+  jwtSecret: process.env.JWT_SECRET_KEY || 'app.io',
   rpc: {
-    jwtSecret: process.env.JWT_SECRET_KEY || '200L@b.io',
+    jwtSecret: process.env.JWT_SECRET_KEY || 'app.io',
     introspectUrl: process.env.VERIFY_TOKEN_URL || `http://localhost:${port}/v1/rpc/introspect`,
     postServiceURL: process.env.POST_SERVICE_URL || `http://localhost:${port}/v1`,
     userServiceURL: process.env.USER_SERVICE_URL || `http://localhost:${port}/v1`,
@@ -39,5 +39,5 @@ export const config = {
     path: 'uploads',
     cdn: process.env.CDN_URL || `http://localhost:${port}/uploads`
   },
-  dbURL: `mysql://root:200lab_secret@localhost:3306/social_network?connection_limit=100`
+  dbURL: `mysql://root:app_secret@localhost:3306/social_network?connection_limit=100`
 };
