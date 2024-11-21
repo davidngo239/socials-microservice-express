@@ -1,0 +1,19 @@
+Kiến trúc Microservices với NEST, Prisma, Postgres & Redis
+Hệ thống bao gồm:
+
+Microservices (NEST): Post, User (Authentication & Authorization), Comment, Notification.
+API Gateway: Tyk/Nginx.
+Database: Postgres.
+PubSub & Caching: Redis.
+Frontend: NEXT React.
+IMG: Microservices Architecture.PNG
+
+Thiết kế Database
+Một số tables được sử dụng:
+IMG: Microservices  Database.PNG
+
+Containerize Docker Images:
+Tất cả services có thể được "đóng gói" vào các Docker Images và Deploy độc lập
+IMG: Microservices  Docker-.PNG
+
+

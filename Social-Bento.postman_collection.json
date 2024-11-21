@@ -1,0 +1,1990 @@
+{
+	"info": {
+		"_postman_id": "37796c53-c3e6-4abf-899a-1dd89b3c064e",
+		"name": "Social-Bento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37469021",
+		"_collection_link": "https://p200lab.postman.co/workspace/200Lab-Workspace~e83af5e7-d4f2-441e-8cca-97036a27797b/collection/19271458-37796c53-c3e6-4abf-899a-1dd89b3c064e?action=share&source=collection_link&creator=37469021"
+	},
+	"item": [
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "file",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/viettranx/Desktop/Screenshot 2024-10-29 at 09.56.30.png"
+								},
+								{
+									"key": "folder",
+									"value": "bento",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/upload-file",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"upload-file"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Like & Dislike",
+					"item": [
+						{
+							"name": "Like post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts/:id/like",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192d29f-d549-799b-b200-3b548d1885a0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unlike post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts/:id/unlike",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts",
+										":id",
+										"unlike"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192d29f-d549-799b-b200-3b548d1885a0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get liked users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts/:id/liked-users",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts",
+										":id",
+										"liked-users"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "01927a8d-49fc-7a3d-8b3b-1b3b3b3b3b3b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Save & Unsave",
+					"item": [
+						{
+							"name": "Save post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts/:id/save",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts",
+										":id",
+										"save"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192e0d7-828b-777b-9ae6-a7057a7c16a0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unsave post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts/:id/unsave",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts",
+										":id",
+										"unsave"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192e0d7-828b-777b-9ae6-a7057a7c16a0 "
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get list post save for user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/saved-posts",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"saved-posts"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192d0fe-19ea-7ee8-82f5-25cc2c361bba"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"content thu nam\",\n    // \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n    \"topicId\": \"0192deb0-bd97-7fff-acba-85e9ce2ffeb7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commentCount\": 10,\n    \"likedCount\": 11,\n    \"image\": \"\",\n    \"content\": \"content test post update 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192e167-f7ef-7bbc-977a-a91a22735b34"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192e165-1d4f-7aa2-b216-db41d4687770"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "str",
+									"value": "2",
+									"description": "seach content keyword",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "0192cc2d-d4c5-7667-a325-9a416e811dea",
+									"description": "get post list of user",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "media",
+									"description": "type post",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get post list",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/posts",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "str",
+											"value": "2",
+											"description": "seach content keyword",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "userId",
+											"value": "0192cc2d-d4c5-7667-a325-9a416e811dea",
+											"description": "get post list of user",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "media",
+											"description": "type post",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2719"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a9f-KsYfrqh/klpx8nLbnk8hOBRA0Ow\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 03 Nov 2024 13:56:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": \"0192db9e-9dc0-7228-9af1-7b74d7d5450a\",\n                \"content\": \"content thu nam\",\n                \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n                \"isFeatured\": false,\n                \"commentCount\": 0,\n                \"likedCount\": 0,\n                \"type\": \"media\",\n                \"createdAt\": \"2024-10-30T04:10:58.000Z\",\n                \"updatedAt\": \"2024-10-30T04:10:58.000Z\",\n                \"author\": {\n                    \"id\": \"0192d0f1-e761-744e-ba05-f42d04d99702\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192db9e-8e28-7228-9af1-77809fbfa81c\",\n                \"content\": \"content thu tu\",\n                \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n                \"isFeatured\": false,\n                \"commentCount\": 0,\n                \"likedCount\": 0,\n                \"type\": \"media\",\n                \"createdAt\": \"2024-10-30T04:10:54.000Z\",\n                \"updatedAt\": \"2024-10-30T04:10:54.000Z\",\n                \"author\": {\n                    \"id\": \"0192d0f1-e761-744e-ba05-f42d04d99702\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192db9e-6c4e-7228-9af1-6a22a4382eb1\",\n                \"content\": \"content thu ba\",\n                \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n                \"isFeatured\": false,\n                \"commentCount\": 0,\n                \"likedCount\": 0,\n                \"type\": \"media\",\n                \"createdAt\": \"2024-10-30T04:10:46.000Z\",\n                \"updatedAt\": \"2024-10-30T04:10:46.000Z\",\n                \"author\": {\n                    \"id\": \"0192d0f1-e761-744e-ba05-f42d04d99702\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192db9e-564d-7228-9af1-6071e8474603\",\n                \"content\": \"content thu 2\",\n                \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n                \"isFeatured\": false,\n                \"commentCount\": 0,\n                \"likedCount\": 0,\n                \"type\": \"media\",\n                \"createdAt\": \"2024-10-30T04:10:40.000Z\",\n                \"updatedAt\": \"2024-10-30T04:10:40.000Z\",\n                \"author\": {\n                    \"id\": \"0192d0f1-e761-744e-ba05-f42d04d99702\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192db9e-23c4-7228-9af1-584dd614f14a\",\n                \"content\": \"content dau tien\",\n                \"image\": \"https://plus.unsplash.com/premium_photo-1670513726119-4cc42ba16d40?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n                \"isFeatured\": false,\n                \"commentCount\": 0,\n                \"likedCount\": 0,\n                \"type\": \"media\",\n                \"createdAt\": \"2024-10-30T04:10:27.000Z\",\n                \"updatedAt\": \"2024-10-30T04:10:27.000Z\",\n                \"author\": {\n                    \"id\": \"0192d0f1-e761-744e-ba05-f42d04d99702\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            }\n        ],\n        \"total\": 5\n    },\n    \"paging\": {\n        \"page\": 1,\n        \"limit\": 20\n    },\n    \"filter\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Get post detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"content 1 va content dau tien\",\n    \"type\": \"text\",\n    \"isFeatured\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192e175-e23a-755f-b785-eb898238dafd"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"viettx\",\n  \"password\": \"12345678\",\n  \"firstName\": \"Viet\",\n  \"lastName\": \"Tran\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/register",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"code = pm.response.code",
+									"if(code ===200){",
+									"    const {data} = pm.response.json()",
+									"    pm.environment.set(\"USER_TOKEN\", data)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"viettranx\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/authenticate",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Like & Dislike",
+					"item": [
+						{
+							"name": "Like comment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/comments/:id/like",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"comments",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192cc4c-b921-700d-93bd-bf9c58f7bfd8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unlike comment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/comments/:id/unlike",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"comments",
+										":id",
+										"unlike"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192cc4c-b921-700d-93bd-bf9c58f7bfd8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get liked users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/comments/:id/liked-users",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"comments",
+										":id",
+										"liked-users"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "01927a8d-49fc-7a3d-8b3b-1b3b3b3b3b3b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "create comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"say hii\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/posts/:id/comments",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"posts",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192dbe8-f7c3-7dda-9c89-9a1e3916d93d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "udapte comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"hi e asdasdsgsm 444\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/comments/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192cc4c-b921-700d-93bd-bf9c58f7bfd8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/comments/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"comments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192cc4c-066a-700d-93bd-b3a6be4ddb3e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/comments/:id/replies",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"comments",
+								":id",
+								"replies"
+							],
+							"query": [
+								{
+									"key": "parentId",
+									"value": "0192c8f6-5a81-777b-852b-f7b261a0e2f4",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192cd6f-04c8-7993-8e05-10d375026050"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List comment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/comments/:id/replies",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"comments",
+										":id",
+										"replies"
+									],
+									"query": [
+										{
+											"key": "parentId",
+											"value": "0192c8f6-5a81-777b-852b-f7b261a0e2f4",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192cd6f-04c8-7993-8e05-10d375026050"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2816"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b00-t0rSsR1CW/vknAMj8Yl7Akm8DYM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Oct 2024 05:34:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": \"0192dbe6-e832-7774-ba30-839b5e9c6b37\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-30T05:29:56.018Z\",\n                \"updatedAt\": \"2024-10-30T05:29:56.018Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192dbe6-cb02-7774-ba30-726b5915ed0a\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-30T05:29:48.546Z\",\n                \"updatedAt\": \"2024-10-30T05:29:48.546Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192d765-f370-7ff6-9e2e-120c63fa2fcc\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-29T08:30:35.888Z\",\n                \"updatedAt\": \"2024-10-29T08:30:35.888Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192d765-e901-7ff6-9e2e-050100f16220\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-29T08:30:33.217Z\",\n                \"updatedAt\": \"2024-10-29T08:30:33.217Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192d765-e7c6-7ff6-9e2d-f60e67307393\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-29T08:30:32.902Z\",\n                \"updatedAt\": \"2024-10-29T08:30:32.902Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            },\n            {\n                \"id\": \"0192d765-dd7e-7ff6-9e2d-e0a75d72c454\",\n                \"userId\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\",\n                \"parentId\": null,\n                \"content\": \"say hii\",\n                \"likedCount\": 0,\n                \"replyCount\": 0,\n                \"status\": \"approved\",\n                \"createdAt\": \"2024-10-29T08:30:30.270Z\",\n                \"updatedAt\": \"2024-10-29T08:30:30.270Z\",\n                \"user\": {\n                    \"id\": \"0192cc2d-d4c5-7667-a325-9a416e811dea\",\n                    \"username\": \"viettranx\",\n                    \"firstName\": \"Viet\",\n                    \"lastName\": \"Tran\",\n                    \"avatar\": null\n                }\n            }\n        ],\n        \"paging\": {\n            \"page\": 1,\n            \"limit\": 20,\n            \"sort\": \"desc\",\n            \"order\": \"createdAt\"\n        },\n        \"total\": 6\n    },\n    \"paging\": {\n        \"page\": 1,\n        \"limit\": 20,\n        \"sort\": \"desc\",\n        \"order\": \"createdAt\"\n    },\n    \"filter\": {\n        \"postId\": \"0192cd6f-04c8-7993-8e05-10d375026050\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Follow",
+					"item": [
+						{
+							"name": "Follow",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/follow",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"follow"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192c8e7-b982-7334-8950-1467e5a5f1ed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un Follow",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/unfollow",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"unfollow"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192c8e7-b982-7334-8950-1467e5a5f1ed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List follower",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/followers",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"followers"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192c8e7-b982-7334-8950-1467e5a5f1ed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List following users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/followings",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"followings"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192c8e7-b982-7334-8950-1467e5a5f1ed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Check if followed user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id/has-followed",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id",
+										"has-followed"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192c8e7-b982-7334-8950-1467e5a5f1ed"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get profile (current user logged in)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/profile",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Viet\",\n    \"lastName\": \"Tran\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/profile",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMTkyOTQ2Yy1jNGNhLTczM2ItYjFjZC0zZWQ2N2JmMTIwOGEiLCJpYXQiOjE3MjkxNDc2ODAsImV4cCI6MTcyOTc1MjQ4MH0.HsyCBTVdHCwsmdmG7TlQwFsN8V2S--mrwR9a8WpNxbY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/rpc/users/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"rpc",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192c25d-fe5e-7660-b382-06f61c164a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id FE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMTkyOTQ2Yy1jNGNhLTczM2ItYjFjZC0zZWQ2N2JmMTIwOGEiLCJpYXQiOjE3MjkxNDc2ODAsImV4cCI6MTcyOTc1MjQ4MH0.HsyCBTVdHCwsmdmG7TlQwFsN8V2S--mrwR9a8WpNxbY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/users/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192d2b6-7af7-7ee3-aea9-4ff28ce3200b"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by id FE",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN}}/v1/users/:id",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192d2b6-7af7-7ee3-aea9-4ff28ce3200b"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "421"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a5-eZzfz/saaRxbrUhWZlrIkMhY8hs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Oct 2024 13:39:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"0192d2b6-7af7-7ee3-aea9-4ff28ce3200b\",\n        \"cover\": null,\n        \"avatar\": null,\n        \"username\": \"vytrant\",\n        \"firstName\": \"Vy\",\n        \"lastName\": \"Tran\",\n        \"password\": \"$2b$10$Fyj7m4eb3OXZ9OGTXDcgIuaNCrsOlfFDLXeTTXp.IoGt12R1I1dPy\",\n        \"salt\": \"$2b$08$5P.KGgtib/7HrP3wFQd6/u\",\n        \"role\": \"user\",\n        \"bio\": null,\n        \"websiteUrl\": null,\n        \"followerCount\": 0,\n        \"postCount\": 0,\n        \"status\": \"active\",\n        \"createdAt\": \"2024-10-28T10:40:27.000Z\",\n        \"updatedAt\": \"2024-10-28T10:40:27.000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RPC",
+			"item": [
+				{
+					"name": "post rpc",
+					"item": [
+						{
+							"name": "Get list post RPC",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ids\": [\"0192dee2-8be0-7998-98c3-3ba5b7c7e680\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DOMAIN}}/v1/rpc/posts/list-by-ids",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"rpc",
+										"posts",
+										"list-by-ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get post RPC",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DOMAIN}}/v1/rpc/posts/:id",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"rpc",
+										"posts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192dcca-d251-766e-9f21-847c55336a7b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "topic rpc",
+					"item": [
+						{
+							"name": "Get list topic RPC",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"ids\": [\"0192cc2d-ec47-7667-a325-a1de52bad99a\", \"0192cc32-0192-7bb8-b2f9-70e56879f722\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DOMAIN}}/v1/rpc/topics/list-by-ids",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"rpc",
+										"topics",
+										"list-by-ids"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get topic RPC",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DOMAIN}}/v1/rpc/topics/:id",
+									"host": [
+										"{{DOMAIN}}"
+									],
+									"path": [
+										"v1",
+										"rpc",
+										"topics",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "0192deb0-bd97-7fff-acba-85e9ce2ffeb7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Instropect",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMTkyOTQ2Yy1jNGNhLTczM2ItYjFjZC0zZWQ2N2JmMTIwOGEiLCJpYXQiOjE3MjkxNDc2ODAsImV4cCI6MTcyOTc1MjQ4MH0.HsyCBTVdHCwsmdmG7TlQwFsN8V2S--mrwR9a8WpNxbY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\" : \"{{USER_TOKEN}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/rpc/introspect",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"rpc",
+								"introspect"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List users by ids",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMTkyOTQ2Yy1jNGNhLTczM2ItYjFjZC0zZWQ2N2JmMTIwOGEiLCJpYXQiOjE3MjkxNDc2ODAsImV4cCI6MTcyOTc1MjQ4MH0.HsyCBTVdHCwsmdmG7TlQwFsN8V2S--mrwR9a8WpNxbY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\" : [\"0192c25d-fe5e-7660-b382-06f61c164a84\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/rpc/users/list-by-ids",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"rpc",
+								"users",
+								"list-by-ids"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Topics",
+			"item": [
+				{
+					"name": "Create topic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"200Lab\",\n    \"color\": \"#4287f5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/topics",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get topic",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/topics/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"topics",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0192deb0-bd97-7fff-acba-85e9ce2ffeb7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List topics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/topics",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update topic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Topic update\",\n    \"color\": \"#008000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN}}/v1/topics/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"topics",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "Read a notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/notifications/:id",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"notifications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List notification (current user)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/notifications",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all notifications",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{USER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN}}/v1/notifications/read-all",
+							"host": [
+								"{{DOMAIN}}"
+							],
+							"path": [
+								"v1",
+								"notifications",
+								"read-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

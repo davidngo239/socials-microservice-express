@@ -1,0 +1,263 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ChatMessages {
+  id        String   @id @map("id") @db.VarChar(36)
+  roomId    String   @map("room_id") @db.VarChar(36)
+  senderId  String   @map("sender_id") @db.VarChar(36)
+  content   String?  @map("content") @db.Text
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([roomId], map: "room_id")
+  @@index([senderId], map: "sender_id")
+  @@map("chat_messages")
+}
+
+model ChatRooms {
+  id         String             @id @map("id") @db.VarChar(36)
+  creatorId  String             @map("creator_id") @db.VarChar(36)
+  receiverId String             @map("receiver_id") @db.VarChar(36)
+  type       chat_rooms_type?   @default(direct) @map("type")
+  status     chat_rooms_status? @default(pending) @map("status")
+  createdAt  DateTime           @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime           @default(now()) @map("updated_at") @db.Timestamp(0)
+  deletedAt  DateTime?          @map("deleted_at") @db.Timestamp(0)
+
+  @@index([creatorId], map: "creator_id")
+  @@index([receiverId], map: "receiver_id")
+  @@map("chat_rooms")
+}
+
+model CommentLikes {
+  commentId String   @map("comment_id") @db.VarChar(36)
+  userId    String   @map("user_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([commentId, userId])
+  @@map("comment_likes")
+}
+
+model Comments {
+  id         String          @id @map("id") @db.VarChar(36)
+  userId     String          @map("user_id") @db.VarChar(36)
+  postId     String          @map("post_id") @db.VarChar(36)
+  parentId   String?         @map("parent_id") @db.VarChar(36)
+  content    String          @map("content") @db.Text
+  likedCount Int             @default(0) @map("liked_count")
+  replyCount Int             @default(0) @map("reply_count")
+  status     comments_status @default(pending) @map("status")
+  createdAt  DateTime        @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt  DateTime?       @default(now()) @map("updated_at") @db.DateTime(6)
+
+  @@index([parentId], map: "parent_id")
+  @@index([postId], map: "post_id")
+  @@index([status], map: "status")
+  @@index([userId], map: "user_id")
+  @@map("comments")
+}
+
+model Followers {
+  followerId  String   @map("follower_id") @db.VarChar(36)
+  followingId String   @map("following_id") @db.VarChar(36)
+  createdAt   DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([followingId, followerId])
+  @@index([followerId], map: "follower_id")
+  @@map("followers")
+}
+
+model Notifications {
+  id         String                @id @map("id") @db.VarChar(36)
+  receiverId String                @map("receiver_id") @db.VarChar(36)
+  actorId    String?               @map("actor_id") @db.VarChar(36)
+  content    String?               @map("content") @db.Text
+  action     notifications_action? @map("action")
+  isSent     Boolean?              @map("is_sent")
+  isRead     Boolean?              @map("is_read")
+  createdAt  DateTime              @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime              @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([receiverId], map: "receiver_id")
+  @@map("notifications")
+}
+
+model PostLikes {
+  postId    String   @map("post_id") @db.VarChar(36)
+  userId    String   @map("user_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([postId, userId])
+  @@index([userId], map: "user_id")
+  @@map("post_likes")
+}
+
+model PostSaves {
+  postId    String   @map("post_id") @db.VarChar(36)
+  userId    String   @map("user_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([postId, userId])
+  @@index([userId], map: "user_id")
+  @@map("post_saves")
+}
+
+model PostTags {
+  postId    String   @map("post_id") @db.VarChar(36)
+  tagId     String   @map("tag_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([postId, tagId])
+  @@index([tagId], map: "tag_id")
+  @@map("post_tags")
+}
+
+model Posts {
+  id           String      @id @map("id") @db.VarChar(36)
+  content      String      @map("content") @db.Text
+  image        String?     @map("image") @db.VarChar(255)
+  authorId     String      @map("author_id") @db.VarChar(36)
+  topicId      String      @map("topic_id") @db.VarChar(36)
+  isFeatured   Boolean?    @default(false) @map("is_featured")
+  commentCount Int?        @default(0) @map("comment_count") @db.UnsignedInt
+  likedCount   Int?        @default(0) @map("liked_count") @db.UnsignedInt
+  type         posts_type? @default(text) @map("type")
+  createdAt    DateTime    @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime    @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([authorId], map: "author_id")
+  @@index([isFeatured], map: "is_featured")
+  @@map("posts")
+}
+
+model Stories {
+  id        String         @id @map("id") @db.VarChar(36)
+  userId    String         @map("user_id") @db.VarChar(36)
+  content   String?        @map("content") @db.Text
+  likeCount Int            @default(0) @map("like_count") @db.UnsignedInt
+  viewCount Int            @default(0) @map("view_count") @db.UnsignedInt
+  media     Json?
+  expiresAt DateTime       @map("expires_at") @db.Timestamp(6)
+  status    stories_status @default(active) @map("status")
+  createdAt DateTime       @unique(map: "stories_created_at_idx") @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime       @map("updated_at") @db.Timestamp(6)
+
+  @@index([userId], map: "user_id")
+  @@map("stories")
+}
+
+model StoryLikes {
+  storyId   String   @map("story_id") @db.VarChar(36)
+  userId    String   @map("user_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([storyId, userId])
+  @@map("story_likes")
+}
+
+model StoryViews {
+  storyId   String   @map("story_id") @db.VarChar(36)
+  userId    String   @map("user_id") @db.VarChar(36)
+  createdAt DateTime @map("created_at") @db.DateTime(6)
+
+  @@id([storyId, userId])
+  @@map("story_views")
+}
+
+model Tags {
+  id        String   @id @map("id") @db.VarChar(36)
+  name      String   @map("name") @db.VarChar(50)
+  postCount Int?     @default(0) @map("post_count") @db.UnsignedInt
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@map("tags")
+}
+
+model Topics {
+  id        String   @id @map("id") @db.VarChar(36)
+  name      String   @map("name") @db.VarChar(100)
+  color     String   @map("color") @db.VarChar(10)
+  postCount Int?     @default(0) @map("post_count") @db.UnsignedInt
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@map("topics")
+}
+
+model Users {
+  id            String        @id @map("id") @db.VarChar(36)
+  cover         String?       @map("cover") @db.VarChar(255)
+  avatar        String?       @map("avatar") @db.VarChar(255)
+  username      String        @map("username") @db.VarChar(100)
+  firstName     String        @map("first_name") @db.VarChar(100)
+  lastName      String        @map("last_name") @db.VarChar(100)
+  password      String        @map("password") @db.VarChar(100)
+  salt          String        @map("salt") @db.VarChar(50)
+  role          users_role    @default(user) @map("role")
+  bio           String?       @map("bio") @db.VarChar(255)
+  websiteUrl    String?       @map("website_url") @db.VarChar(255)
+  followerCount Int?          @default(0) @map("follower_count") @db.UnsignedInt
+  postCount     Int?          @default(0) @map("post_count") @db.UnsignedInt
+  status        users_status? @default(active) @map("status")
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt     DateTime      @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([role], map: "role")
+  @@index([status], map: "status")
+  @@map("users")
+}
+
+enum notifications_action {
+  liked
+  followed
+  replied
+}
+
+enum chat_rooms_type {
+  direct
+  group
+}
+
+enum chat_rooms_status {
+  pending
+  active
+  deleted
+}
+
+enum stories_status {
+  active
+  inactive
+}
+
+enum comments_status {
+  pending
+  approved
+  rejected
+  deleted
+  spam
+}
+
+enum posts_type {
+  text
+  media
+}
+
+enum users_role {
+  user
+  admin
+}
+
+enum users_status {
+  active
+  pending
+  inactive
+  banned
+  deleted
+}
